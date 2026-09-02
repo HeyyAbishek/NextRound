@@ -18,7 +18,7 @@ Upload your resume and a job description, and NextRound indexes your resume into
 
 Practice hands-free using **Voice Interview Mode** and track your strengths and weak areas across multiple interview sessions using **Mem0**.
 
-<img width="1917" height="856" alt="NextRound Dashboard" src="https://github.com/user-attachments/assets/00b39f0f-715b-4da5-8663-39d1db742f29" />
+<img width="1917" height="856" alt="NextRound Dashboard" src="./Screenshot 2026-09-01 202207.png" />
 
 ---
 
