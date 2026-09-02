@@ -1,0 +1,41 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-multipart
+
+# AI & LLM
+openai
+langchain
+langchain-community
+langgraph
+langchain-openai
+
+# Vector DB
+chromadb
+langchain-chroma
+
+# Memory
+mem0ai
+
+# Queue & Background Processing
+redis
+rq
+
+# PDF Processing
+pypdf
+
+# Database
+sqlalchemy
+asyncpg
+alembic
+
+# Auth
+bcrypt
+python-jose[cryptography]
+
+# Logging
+loguru
+
+# Utilities
+python-dotenv

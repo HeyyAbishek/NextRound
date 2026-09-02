@@ -1,0 +1,64 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://interviewforge:interviewforge@postgres:5432/interviewforge
+      REDIS_URL: redis://redis:6379
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: "8000"
+    depends_on:
+      - postgres
+      - redis
+      - chromadb
+    volumes:
+      - uploads:/app/uploads
+
+  postgres:
+    image: postgres:17-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: interviewforge
+      POSTGRES_PASSWORD: interviewforge
+      POSTGRES_DB: interviewforge
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8100:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - ANONYMIZED_TELEMETRY=false
+
+  worker:
+    build: ./backend
+    command: rq worker evaluation --url redis://redis:6379
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://interviewforge:interviewforge@postgres:5432/interviewforge
+      REDIS_URL: redis://redis:6379
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: "8000"
+    depends_on:
+      - redis
+
+volumes:
+  uploads:
+  postgres_data:
+  redis_data:
+  chroma_data:

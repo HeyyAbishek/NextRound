@@ -1,0 +1,46 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-multipart
+
+# AI & LLM
+langchain
+langchain-community
+langgraph
+
+# Vector DB
+chromadb
+langchain-chroma
+
+# Memory
+mem0ai
+
+# Queue & Background Processing
+redis
+rq
+
+# PDF Processing
+pypdf
+
+# Database
+sqlalchemy
+asyncpg
+alembic
+
+# Auth
+bcrypt
+cryptography
+python-jose[cryptography]
+
+# Logging
+loguru
+
+# Utilities
+python-dotenv
+pyyaml>=6.0.1
+
+langchain-groq
+langchain-huggingface
+sentence-transformers
